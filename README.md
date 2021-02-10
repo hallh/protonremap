@@ -21,7 +21,7 @@ It would of course be possible to implement this to provide an SSL-enabled proxy
 
 ### How to use it?
 
-To build the image and run the container, do this:
+To build the image, do this:
 
 ```sh
 $ git clone https://github.com/hallh/protonremap
@@ -37,11 +37,11 @@ $ docker run --net=host --restart always -d -m 32m protonremap:0.0.1
 
 To connect your email client:
 
-1. Configure ProtonMail Bridge to use port `1143` for IMAP.
-2. Configure your email client to connect to `127.0.0.1:3143` **without SSL/TLS, nor STARTTLS**.
+1. Make sure that the ProtonMail Bridge uses port `1143` for IMAP.
+2. Configure your email client to connect to `127.0.0.1:3143` without SSL/TLS or STARTTLS.
 
 ### Final remarks
 
-This tool can work for macOS users too, but requires a change in the `stunnel.conf` file. You'll need to replace `127.0.0.1:1143` with `host.docker.internal:1143`, and then add `-p 3143` to the `docker run ...` command.
+This tool can work for macOS users too, but requires a change in the `stunnel.conf` file. You'll need to replace `127.0.0.1:1143` with `host.docker.internal:1143`, and then add `-p 3143:3143` to the `docker run ...` command.
 
 Enjoy.
